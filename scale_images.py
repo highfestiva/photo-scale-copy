@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 
 
 import PIL.Image
@@ -28,9 +28,7 @@ def walk_count_files(_, dirname, names):
 		if n[-4:] in img_extensions:
 			global imgcnt
 			imgcnt += 1
-			# print(dirname, n, imgcnt)
 	sys.stdout.write("\rCounting: %i images." % imgcnt)
-	#print dirname, names
 
 
 def countfiles(sourcedir):
@@ -41,8 +39,6 @@ def countfiles(sourcedir):
 
 
 def walk_scale_files(targetdir, dirname, names):
-	# print('yes!')
-	# print(targetdir, dirname, names)
 	if filterout(dirname):
 		return
 	for n in names:
@@ -55,8 +51,6 @@ def walk_scale_files(targetdir, dirname, names):
 			try:
 				im = PIL.Image.open(os.path.join(dirname, n))
 				ratio = min(w/float(im.size[0]), h/float(im.size[1]))
-				#print
-				#print "Previous size:", im.size, "ratio:", ratio
 				im = im.resize(tuple(int(x*ratio) for x in im.size), PIL.Image.ANTIALIAS)
 				subdir = os.path.join(targetdir, "%3.3i" % (imgindex//100))
 				if not os.path.exists(subdir):
