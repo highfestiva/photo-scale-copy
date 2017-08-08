@@ -1,7 +1,7 @@
 # photo-scale-copy
 Downsize and rename pictures for old-school photo frame. Run like this:
 
-bash```
+```bash
 cd /f/
 python3 scale_images.py /c/Users/SomeUser/Pictures img 320 234
 ```
